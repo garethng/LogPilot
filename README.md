@@ -1,88 +1,71 @@
-# logpilot
-logpilot is a project to extend python standard logging to offer customizing ability.
+# LogPilot
 
-### Install
+![GitHub release (with filter)](https://img.shields.io/github/v/release/garethng/logpilot)
+![Build Status](https://img.shields.io/github/actions/workflow/status/garethng/logpilot/python-publish.yml)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Python Versions](https://img.shields.io/pypi/pyversions/logpilot.svg)
+![GitHub issues](https://img.shields.io/github/issues/garethng/LogPilot)
+
+## Description
+LogPilot is a Python logging module that offers enhanced capabilities for logging in Python applications. It provides a simple and intuitive interface for logging, with additional features like custom fields (UUID, elapsed time), hostname inclusion, and more.
+
+## Installation
+Install LogPilot directly from PyPI:
 ```bash
 pip install logpilot
 ```
 
-### Log format  
-
-we only support format like this:  
-```bash
-#--------------------------------------------------
-# Log Format
-#--------------------------------------------------
-# %(asctime)s.%(msecs)03d      yyyy-mm-dd HH:MM:SS 2016-01-01 00:00:00.000
-# %(filename)s      
-# %(pathname)s      Full path 
-# %(funcName)s      
-# %(levelname)s     
-# %(lineno)d        
-# %(module)s        
-# %(message)s       
-# %(name)s          
-# %(processName)s   
-# %(threadName)s    
-# %(hostname)s      FQDN
-# %(uuid)s          custom uuid 
-# %(elapsed)s       (ms)
-%(asctime)s.%(msecs)03d|%(levelname)s|%(name)s|%(filename)s|%(lineno)d|%(module)s|%(funcName)s|%(processName)s|%(threadName)s|%(message)s|%(hostname)s|%(uuid)s|%(elapsed)s
-```
-
-### How to use  
-```python
-from logpilot.log import Log
-
-log = Log.get_logger(__name__)
-
-
-class Example(object):
-
-    def __init__(self):
-      log.info(msg="this is a test for logpilot", uuid="2b24bad1c5df6b4551768fe09ae877b893fc35505847e80f119c395bca27", elapsed=256)
-```
-
-### example log
-```bash
-2016-11-17 14:35:59|DEBUG|__main__|test2_log.py|11|test2_log|__init__|MainProcess|MainThread|this is a test for logpilot|localhost|2b24bad1c5df6b4551768fe09ae877b893fc35505847e80f119c395bca27|256
-```
-
-### How to set global uuid
+## Usage
+To use LogPilot in your Python projects, simply import the `Log` class and use its `get_logger` method to create a logger instance. Here's a quick start guide:
 
 ```python
-from logpilot.log import Log
-log = Log.get_logger(__name__, uuid='hsdfhkd')
-log.info(msg="this is a test logpilot", elapsed=8888)
-log.info(msg='hahah', uuid='5678')
-log.debug(msg="android world", elapsed=234)
-# notice that uuid also can be override
-log.error(msg="ios world", uuid='jaj', elapsed=99)
+from logpilot import Log
+
+logger = Log.get_logger("your_logger_name")
+logger.info("This is an info log")
+logger.error("This is an error log")
 ```
 
+## Features
+- Easy integration with Python applications
+- Automatic inclusion of hostname in logs
+- Custom fields like UUID and elapsed time
+- Streamlined setup of logging format and handlers
 
-### How to change log level
-  
-default DEBUG
+## Configuration
+You can customize the logger by providing `uuid` and `elapsed` parameters when getting a logger:
 
-```python  
-import logging
-from logpilot.log import Log
+```python
+logger = Log.get_logger("your_logger_name", uuid="your_uuid", elapsed="time_elapsed")
+```
 
-log = Log.get_logger('test2222')
-log.logger.setLevel(logging.INFO)
+## Removing Logger
+To remove a logger instance, use the `remove_logger` method:
+
+```python
+Log.remove_logger()
+```
+
+## Requirements
+- Python 3.x
+- `six` library for Python 2 and 3 compatibility
+
+## Contributing
+Contributions to LogPilot are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Contributor
+<table border=0>
+  <tr >
+    <td align="center">
+      <a href="https://github.com/GarethNg">
+        <img src="https://github.com/GarethNg.png?size=100" width="100px;" alt="GarethNg"/>
+        <br />
+        <sub><b>GarethNg</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
 
-class Test(object):
-
-    def __init__(self):
-        log.info(msg="this is a test logpilot", hahah='hooooo.', age=10000, fake_key='not valid')
-        
-if __name__ == '__main__':
-    from logpilot.log import Log
-    a = Test()
-    log.debug(msg="this is a test logpilot", hahah='hooooo.', uuid="1234567890")
-```  
-
-### TODO:
--[ ] custom format
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details.
