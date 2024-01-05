@@ -12,6 +12,13 @@ on:
   release:
     types: [published]
 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version number:"
+        required: true
+        type: string
+
 permissions:
   contents: read
 
