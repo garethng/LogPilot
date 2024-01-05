@@ -11,22 +11,22 @@ pip install logpilot
 we only support format like this:  
 ```bash
 #--------------------------------------------------
-# 日志格式
+# Log Format
 #--------------------------------------------------
-# %(asctime)s.%(msecs)03d      年-月-日 时:分:秒 2016-01-01 00:00:00.000
-# %(filename)s      文件名，不含目录
-# %(pathname)s      目录名，完整路径
-# %(funcName)s      函数名
-# %(levelname)s     级别名
-# %(lineno)d        行号
-# %(module)s        模块名
-# %(message)s       消息体
-# %(name)s          日志模块名
-# %(processName)s   进程名
-# %(threadName)s    线程名
+# %(asctime)s.%(msecs)03d      yyyy-mm-dd HH:MM:SS 2016-01-01 00:00:00.000
+# %(filename)s      
+# %(pathname)s      Full path 
+# %(funcName)s      
+# %(levelname)s     
+# %(lineno)d        
+# %(module)s        
+# %(message)s       
+# %(name)s          
+# %(processName)s   
+# %(threadName)s    
 # %(hostname)s      FQDN
-# %(uuid)s          跟踪id，可以是sha256或者job id
-# %(elapsed)s       耗时(ms)
+# %(uuid)s          custom uuid 
+# %(elapsed)s       (ms)
 %(asctime)s.%(msecs)03d|%(levelname)s|%(name)s|%(filename)s|%(lineno)d|%(module)s|%(funcName)s|%(processName)s|%(threadName)s|%(message)s|%(hostname)s|%(uuid)s|%(elapsed)s
 ```
 
@@ -83,3 +83,6 @@ if __name__ == '__main__':
     a = Test()
     log.debug(msg="this is a test logpilot", hahah='hooooo.', uuid="1234567890")
 ```  
+
+### TODO:
+-[ ] custom format
