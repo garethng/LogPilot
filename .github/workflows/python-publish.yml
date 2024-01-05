@@ -38,7 +38,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install build
     - name: Set version
-      run: echo "VERSION=$(echo ${GITHUB_REF#refs/tags/})" >> $GITHUB_ENV
+      run: |
+        if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+          echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+        else
+          echo "VERSION=$(echo ${GITHUB_REF#refs/tags/})" >> $GITHUB_ENV
+        fi
     - name: Build package
       run: python -m build
     - name: Publish package
