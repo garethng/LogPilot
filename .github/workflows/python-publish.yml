@@ -40,11 +40,13 @@ jobs:
     - name: Set version
       run: |
         if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-          echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+          VERSION=${{ github.event.inputs.version }} \
+            envsubst < setup.py.tmp > setup.py
         else
-          echo "VERSION=$(echo ${GITHUB_REF#refs/tags/})" >> $GITHUB_ENV
+          VERSION=$(echo ${GITHUB_REF#refs/tags/}) \
+            envsubst < setup.py.tmp > setup.py
         fi
-        envsubst < setup.py.tmp > setup.py
+        
     - name: Build package
       run: python -m build
     - name: Publish package
