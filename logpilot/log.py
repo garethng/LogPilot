@@ -1,29 +1,17 @@
-__author__ = 'gareth ng'
-
+"""
+Author: Gareth Ng
+Email: wu.qingzhe@outlook.com
+"""
 
 import socket
 import logging
 import six
 
 
-class Singleton(object):
-    """
-    Singleton interface:
-    """
-    def __new__(cls, *args, **kwargs):
-        it = cls.__dict__.get("__it__")
-        if it is not None:
-            return it
-        cls.__it__ = it = object.__new__(cls)
-        it.init(*args, **kwargs)
-        return it
-
-    def init(self, *args, **kwargs):
-        pass
-
-
 class CommonAdapter(logging.LoggerAdapter):
-
+    """
+    CommonAdapter
+    """
     extra_field = ['uuid', 'elapsed']
 
     def __init__(self, logger, uuid=None, elapsed=None):
@@ -32,7 +20,7 @@ class CommonAdapter(logging.LoggerAdapter):
         extra = {
             'hostname': socket.gethostname()
         }
-        super(CommonAdapter, self).__init__(logger, extra)
+        super().__init__(logger, extra)
 
     def __format_extra(self, kwargs):
         kwargs_tmp = dict(kwargs)
@@ -58,7 +46,7 @@ class CommonAdapter(logging.LoggerAdapter):
         return msg, extra_pack
 
 
-class Log(object):
+class Log:
 
     logger = None
 
@@ -67,14 +55,15 @@ class Log(object):
         if not isinstance(name, six.string_types):
             raise TypeError('A logger name must be string or Unicode')
         if isinstance(name, six.string_types):
-            name = '{0}-{1}'.format('loggly', name)
+            name = f"logpilot-{name}"
 
         # configure logging
         log_t = logging.getLogger(name)
         log_t.propagate = False
-        if not len(log_t.handlers):
+        if not log_t.handlers:
             handler = logging.StreamHandler()
-            log_fmt = '%(asctime)s.%(msecs)03d|%(levelname)s|%(name)s|%(filename)s|%(lineno)d|%(module)s|%(funcName)s|%(processName)s|%(threadName)s|%(message)s|%(hostname)s|%(uuid)s|%(elapsed)s'
+            log_fmt = ("%(asctime)s.%(msecs)03d|%(levelname)s|%(name)s|%(filename)s|%(lineno)d|%(module)s|%(funcName)s|"
+                       "%(processName)s|%(threadName)s|%(message)s|%(hostname)s|%(uuid)s|%(elapsed)s")
             date_fmt = '%Y-%m-%d %H:%M:%S'
             formatter = logging.Formatter(fmt=log_fmt, datefmt=date_fmt)
             handler.setFormatter(formatter)
@@ -82,3 +71,7 @@ class Log(object):
         log_t.setLevel(logging.INFO)
         Log.logger = CommonAdapter(log_t, uuid, elapsed)
         return Log.logger
+
+    @staticmethod
+    def remove_logger():
+        Log.logger = None
