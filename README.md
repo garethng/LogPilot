@@ -58,6 +58,13 @@ Contributions to LogPilot are welcome! Please read our [Contributing Guide](CONT
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://blog.wuqingzhe.cn"><img src="https://avatars.githubusercontent.com/u/22514420?v=4?s=100" width="100px;" alt="Gareth Ng"/><br /><sub><b>Gareth Ng</b></sub></a><br /><a href="#code-garethng" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
