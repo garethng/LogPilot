@@ -53,18 +53,7 @@ Log.remove_logger()
 ## Contributing
 Contributions to LogPilot are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Contributor
-<table border=0>
-  <tr >
-    <td align="center">
-      <a href="https://github.com/GarethNg">
-        <img src="https://github.com/GarethNg.png?size=100" width="100px;" alt="GarethNg"/>
-        <br />
-        <sub><b>GarethNg</b></sub>
-      </a>
-    </td>
-  </tr>
-</table>
+## Contributors
 
 
 ## License
