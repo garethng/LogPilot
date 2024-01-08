@@ -55,6 +55,15 @@ Contributions to LogPilot are welcome! Please read our [Contributing Guide](CONT
 
 ## Contributors
 
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details.
