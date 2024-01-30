@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Python Versions](https://img.shields.io/pypi/pyversions/logpilot.svg)
 ![GitHub issues](https://img.shields.io/github/issues/garethng/LogPilot)
-
+![](https://img.shields.io/pypi/dm/logpilot)
 ## Description
 LogPilot is a Python logging module that offers enhanced capabilities for logging in Python applications. It provides a simple and intuitive interface for logging, with additional features like custom fields (UUID, elapsed time), hostname inclusion, and more.
 
